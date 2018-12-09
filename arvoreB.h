@@ -112,3 +112,4 @@ void printPag(BTreeNode* node, FILE* fp);
 void createArqu(BTree* t);
 int retornaPonteiro(BTreeNode* node, const char* item);
 void recupera_reg(const char* filename, int ponteiro);
+void include_reg(const char* filename, BTree* t);

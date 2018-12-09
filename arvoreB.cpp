@@ -223,7 +223,7 @@ void make_Btree(const char* filename, BTree* t) {
             chave.insert(0, "0");
         }
         t->insert(chave);
-        cout << chave << endl;
+        // cout << chave << endl;
         cont++;
     } 
     fp.close();
@@ -607,8 +607,45 @@ void BTree::remove(string k)
     return; 
 } 
 
+void include_reg(const char* filename, BTree* t) {
+    fstream fp;
+    fp.open(filename, ios::app);
+    string nome, matricula, curso, turma, novo_registro;
+    int descartavel;
+
+    //cin >> descartavel;
+    cout << "Insira o nome do aluno: " << endl;
+    getline(cin, nome);
+    getline(cin, nome);
+
+    int blank_spaces = 41 - nome.size();
+    for (int i = 0; i < blank_spaces; i++) {
+        nome += " ";
+    }
+
+    cout << "Insira a matrícula do aluno (6 caracteres): " << endl;
+    cin >> matricula;
+    matricula += "  ";
+
+    cout << "Insira o curso (2 caracteres): " << endl;
+    cin >> curso;
+    curso = upper_case(curso);
+    curso += "  ";
+
+    cout << "Insira a turma (1 caractere)" << endl;
+    cin >> turma;
+    turma = upper_case(turma);
+    turma += "\n";
+
+    novo_registro = nome + matricula + curso + turma;
+    
+    fp << novo_registro;
+    t->insert(novo_registro);
+
+    fp.close();
+}
 // Driver program to test above functions 
-int main() 
+/*int main() 
 { 
     BTree t(3);
     make_Btree("../lista.txt", &t);
@@ -621,7 +658,7 @@ int main()
     t.insert("8888|25454647"); 
     t.insert("7777|56436436"); 
     t.insert("5555|57682235"); 
-  */
+
     cout << "Traversal of the constucted tree is "; 
     t.traverse(); 
   
@@ -636,7 +673,7 @@ int main()
     recupera_reg("../lista.txt", aux);
     teste = 0;
     t.remove("CAR62364");
-    /*
+    
     k = "SAM76667";
     (t.search(k, &teste) != NULL)? cout << "\nPresent" : cout << "\nNot Present";
     printf("\nNumero de seeks: %d\n", teste);
@@ -737,7 +774,7 @@ int main()
     (t.search(k, &teste) != NULL)? cout << "\nPresent" : cout << "\nNot Present";
     printf("\nNumero de seeks: %d\n", teste);
     teste = 0;
-    */
+    
     createArqu(&t);
 
     printf("\n%d\n", Contador);
@@ -745,3 +782,4 @@ int main()
   
     return 0; 
 } 
+*/
