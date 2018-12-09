@@ -33,6 +33,7 @@ int main(int argc, char const *argv[]) {
                 cout << "Você escolheu mostrar arquivo de índices" << endl;
                 make_Btree(argv[1], &t);
                 //createArqu(&t);
+                // quando chama a createArq dps de incuir da seg fault
                 system("cat BTree.txt");
                 break;
             case 2: {
